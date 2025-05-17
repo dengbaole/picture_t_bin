@@ -28,9 +28,14 @@ unsigned char data[] = {
 };
 
 uint32_t flash_address = 0x00000;
-
+FILE *file = NULL;
 
 void flash_write_bitmap_array_impl(const char* name, const void* array[], uint8_t count) {
+    FILE *file = fopen("image_data.bin", "wb");
+    if (!file) {
+        perror("fopen error");
+        //return 1;
+    }
 	printf("FLASH_sBITMAP flash_%s[%d] = {\n", name, count);
 	for (uint8_t i = 0; i < count; i++) {
 		const sBITMAP* bmp = array[i];
@@ -40,7 +45,7 @@ void flash_write_bitmap_array_impl(const char* name, const void* array[], uint8_
 		const uint32_t current_addr = flash_address;
 
 		// W25Q128_WriteData(bmp->map, current_addr, data_size);
-
+        fwrite(bmp->map, 1, data_size, file);
 		flash_address += data_size;
 
 		printf("%d, %d, 0x%x,\n",bmp->w, bmp->h, current_addr);
@@ -59,14 +64,14 @@ int main() {
         return 1;
     }
 
-    const size_t data_size = sizeof(data);
-    const size_t written = fwrite(data, 1, data_size, file);
+    // const size_t data_size = sizeof(data);
+    // const size_t written = fwrite(data, 1, data_size, file);
     
-    if (written != data_size) {
-        perror("fwrite error1");
-        fclose(file);
-        return 1;
-    }
+    // if (written != data_size) {
+    //     perror("fwrite error1");
+    //     fclose(file);
+    //     return 1;
+    // }
     // const size_t data1_size = sizeof(turbo_9_12_9_bmp.map);
     // const size_t written2 = fwrite(turbo_9_12_9_bmp.map, 1, data1_size, file);
     // if (written2 != data_size) {
@@ -74,20 +79,20 @@ int main() {
     //     fclose(file);
     //     return 1;
     // }
-    const size_t data1_size = charge_00_bmp.w * charge_00_bmp.h * 2;;
-    const size_t written2 = fwrite(charge_00_bmp.map, 1, data1_size, file);
-    if (written2 != data1_size) {
-        fprintf(stderr, "fwrite error2: wrote %zu bytes, expected %zu bytes\n", written2, data1_size);
-        fclose(file);
-        return 1;
-    }
+    // const size_t data1_size = charge_00_bmp.w * charge_00_bmp.h * 2;;
+    // const size_t written2 = fwrite(charge_00_bmp.map, 1, data1_size, file);
+    // if (written2 != data1_size) {
+    //     fprintf(stderr, "fwrite error2: wrote %zu bytes, expected %zu bytes\n", written2, data1_size);
+    //     fclose(file);
+    //     return 1;
+    // }
 
     // const size_t data2_size = sizeof(charge_array[0].map);
     flash_write_bitmap_array(charge_array);
+     flash_write_bitmap_array(charge_array);
 
     fclose(file);
-    printf("File write success: %zu bytes\n", written);
-    printf("File write success: %zu bytes\n", written2);
+    printf("File write success!!\n");
     return 0;
 }
 
