@@ -1,0 +1,20 @@
+{
+  "configurations": [
+    {
+      "name": "windows-clang-x64",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "intelliSenseMode": "windows-clang-x64",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "compilerPath": "E:/app/tcc/tcc/tcc.exe"
+    }
+  ],
+  "version": 4
+}
