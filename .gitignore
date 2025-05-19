@@ -10,6 +10,7 @@ test*
 01.bmp
 
 # for firmware
+./moudle/tft
 utils_bin
 bin
 Listings
