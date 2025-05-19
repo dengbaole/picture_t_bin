@@ -27,6 +27,8 @@ dist:
 
 build:
 	tcc main.c tft_image.c -o output_executable.exe
+	./output_executable.exe
+
 
 
 # build:
