@@ -1,0 +1,25 @@
+
+_build
+
+.vscode*
+Thumbs.db
+config.json
+
+test*
+# for tenx
+01.bmp
+
+# for firmware
+utils_bin
+bin
+Listings
+Objects
+EventRecorderStub.scvd
+JLinkLog*
+JLinkSettings*
+*.uvguix*
+*.uvoptx
+
+# compile toolchain generated
+compile_parameter.h
+dist

@@ -14,7 +14,6 @@ void flash_write_bitmap_array_impl(const char* name, const void* array[], uint8_
 		// W25Q128_WriteData(bmp->map, current_addr, data_size);
 		fwrite(bmp->map, 1, data_size, file);
 		flash_address += data_size;
-
 		printf("%d, %d, 0x%x,\n", bmp->w, bmp->h, current_addr);
 	}
 	printf("};\n");
@@ -37,6 +36,7 @@ int main() {
 	flash_write_bitmap_array(nopod_array);
 	flash_write_bitmap_array(power_on_array);
 	flash_write_bitmap_array(smoke_array);
+    flash_write_bitmap_array(power_off_array);
 	flash_write_bitmap_array(letter_array);
 	flash_write_bitmap_array(turbo_9_12_array);
 	flash_write_bitmap_array(nos_9_12_array);
@@ -44,7 +44,6 @@ int main() {
 	printf("File write end!!\n");
 	return 0;
 }
-
 
 
 

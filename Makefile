@@ -25,10 +25,13 @@ dist:
 #     tcc -run main.c tft_image.c
 # 	@echo [ END ]----- UV build ----
 
-build:
-	tcc main.c tft_image.c -o output_executable.exe
-	./output_executable.exe
+# build:
+# 	tcc main.c tft_image.c -o output_executable
+# 	./output_executable
 
+build:
+	tcc $(wildcard *.c) -o output_executable
+	./output_executable
 
 
 # build:
