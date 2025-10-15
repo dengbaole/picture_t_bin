@@ -29,17 +29,18 @@ int main() {
 		perror("fopen error");
 		return 1;
 	}
-	flash_write_bitmap_array(charge_array);
-	flash_write_bitmap_array(timeout_array);
-	flash_write_bitmap_array(lock_array);
-	flash_write_bitmap_array(lowpower_array);
-	flash_write_bitmap_array(nopod_array);
-	flash_write_bitmap_array(power_on_array);
+	flash_write_bitmap_array(boot_array);
+	flash_write_bitmap_array(charge_bg_array);
+	flash_write_bitmap_array(charge_num_array);
+	flash_write_bitmap_array(err_p_array);
+	flash_write_bitmap_array(main_dowm_array);
+	flash_write_bitmap_array(main_up_array);
+	flash_write_bitmap_array(mian_a_array);
+    flash_write_bitmap_array(mian_b_array);
+	flash_write_bitmap_array(mian_num_array);
+	flash_write_bitmap_array(oil_array);
+	flash_write_bitmap_array(power_off_array);
 	flash_write_bitmap_array(smoke_array);
-    flash_write_bitmap_array(power_off_array);
-	flash_write_bitmap_array(letter_array);
-	flash_write_bitmap_array(turbo_9_12_array);
-	flash_write_bitmap_array(nos_9_12_array);
 	fclose(file);
 	printf("File write end!!\n");
 	return 0;
